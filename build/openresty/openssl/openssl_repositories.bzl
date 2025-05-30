@@ -15,4 +15,6 @@ def openssl_repositories():
         urls = [
             "https://github.com/openssl/openssl/releases/download/openssl-" + version + "/openssl-" + version + ".tar.gz",
         ],
+        patches = ["//build/openresty/openssl:openssl.openssl-3.4.patch"],
+        patch_args = ["-p1"],
     )

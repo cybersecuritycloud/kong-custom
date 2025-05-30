@@ -172,6 +172,7 @@ CONFIGURE_OPTIONS = [
     "--add-module=$$EXT_BUILD_ROOT$$/external/lua-kong-nginx-module/stream",
     "--add-module=$$EXT_BUILD_ROOT$$/external/lua-resty-lmdb",
     "--add-module=$$EXT_BUILD_ROOT$$/external/lua-resty-events",
+    "--add-module=$$EXT_BUILD_ROOT$$/external/nginx-ssl-fingerprint",
 ] + select({
     "@kong//:aarch64-linux-glibc-cross": [
         "--crossbuild=Linux:aarch64",
@@ -279,6 +280,7 @@ configure_make(
         "@lua-kong-nginx-module//:all_srcs",
         "@lua-resty-events//:all_srcs",
         "@lua-resty-lmdb//:all_srcs",
+        "@nginx-ssl-fingerprint//:all_srcs",
     ] + select({
         "@kong//:brotli_flag": [
             "@ngx_brotli//:all_srcs",
@@ -354,6 +356,7 @@ genrule(
         "@lua-kong-nginx-module//:all_srcs",
         "@lua-resty-events//:all_srcs",
         "@lua-resty-lmdb//:all_srcs",
+        "@nginx-ssl-fingerprint//:all_srcs",
         "@ngx_brotli//:all_srcs",
     ] + select({
         "@kong//:wasmx_flag": [

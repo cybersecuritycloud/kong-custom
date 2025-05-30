@@ -94,6 +94,15 @@ def openresty_repositories():
         recursive_init_submodules = True,
     )
 
+    maybe(
+        git_or_local_repository,
+        name = "nginx-ssl-fingerprint",
+        branch = "master",
+        remote = "https://github.com/phuslu/nginx-ssl-fingerprint",
+        build_file_content = _NGINX_MODULE_DUMMY_FILE,
+        recursive_init_submodules = True,
+    )
+
 def _openresty_binding_impl(ctx):
     ctx.file("BUILD.bazel", "")
     ctx.file("WORKSPACE", "workspace(name = \"openresty_patch\")")
